@@ -20,13 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("Jon")
-                .password(passwordEncoder().encode("12345")).authorities("USER");
+        auth.inMemoryAuthentication().withUser("user")
+                .password(passwordEncoder().encode("password")).authorities("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http.authorizeRequests().anyRequest().authenticated().and().formLogin()
+                .loginPage("/login").permitAll();
     }
 
     @Override

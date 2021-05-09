@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class Resources {
 
-    @RequestMapping("/")
+    @RequestMapping("/login")
     public String login() {
         return "Login";
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        return "index";
     }
 }
